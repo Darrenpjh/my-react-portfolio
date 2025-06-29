@@ -94,17 +94,7 @@ function App() {
             https://www.linkedin.com/in/darren-png/
           </a>
         </p>
-        <p>
-          GitHub:{' '}
-          <a
-            href= "https://github.com/Darrenpjh"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#4FC3F7' }}
-          >
-            github.com/darren
-          </a>
-        </p>
+      
       </div>
 
       {/* Projects Section */}
