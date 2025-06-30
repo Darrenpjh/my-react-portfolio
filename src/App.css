@@ -1,1 +1,172 @@
-.App { text-align: center; }
+.App {
+  text-align: center;
+  overflow-x: hidden; /* Prevent horizontal scrollbars during animations */
+}
+
+/* Fade-in animation for the entire page */
+.App-fade-in {
+  animation: fadeInAnimation 1s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Text animation for the name */
+.name-animation {
+  animation: slideInFromLeft 1s ease-out forwards;
+  opacity: 0; /* Start with text invisible */
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Text animation for the title */
+.title-animation {
+  animation: slideInFromRight 1s ease-out 0.5s forwards; /* Delay by 0.5s */
+  opacity: 0; /* Start with text invisible */
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Button hover animation */
+.button-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-hover-effect:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Image pop-in animation */
+.image-pop-in {
+  animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s forwards;
+  transform: scale(0.5); /* Start smaller */
+  opacity: 0;
+}
+
+@keyframes popIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Contact section slide-up animation */
+.contact-slide-up {
+  animation: slideUp 1s ease-out 1.5s forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* About Me Section Animation */
+.about-me-fade-in {
+  animation: fadeInAnimation 1.5s ease-in-out 1.2s forwards; /* Delayed fade-in */
+  opacity: 0;
+}
+/* Re-using fadeInAnimation keyframes defined earlier for overall page fade-in */
+/* If a different animation is desired, new keyframes can be added here */
+
+/*
+Removed duplicate @keyframes slideUp - it's already defined above for .contact-slide-up
+If .projects-slide-up needs a distinct slideUp, it should have a uniquely named animation.
+For now, assuming .projects-slide-up and .contact-slide-up use the same slideUp keyframes.
+*/
+
+@keyframes slideUp { /* Ensuring this is the single definition for slideUp */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem; /* Add some padding on the sides */
+}
+
+.project-card {
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: space-between; /* Distribute space */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem; /* Add space below image */
+}
+
+.project-card h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem; /* Add space below title */
+}
+
+.project-card p {
+  color: #bbb; /* Lighter text for description */
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex-grow: 1; /* Allow description to take available space */
+  margin-bottom: 1rem; /* Space before the link */
+}
+
+.project-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #4FC3F7;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* Align button to the start of the card footer */
+}
+
+.project-link:hover {
+  background-color: #29b6f6;
+}
+
+/* Animation for projects section (can be the same as contact or a new one) */
+.projects-slide-up {
+  animation: slideUp 1s ease-out 2s forwards; /* Delay slightly more */
+  opacity: 0;
+  transform: translateY(50px);
+}
