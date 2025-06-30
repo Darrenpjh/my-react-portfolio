@@ -70,6 +70,35 @@ function App() {
         }}
       />
 
+      {/* About Me Section */}
+      <div
+        id="about"
+        className="about-me-fade-in" // Using a fade-in animation, can be customized
+        style={{
+          marginTop: '4rem',
+          padding: '2rem 1rem',
+          borderTop: '1px solid #444',
+          borderBottom: '1px solid #444',
+          textAlign: 'left', // Align text to the left for readability
+          maxWidth: '800px', // Max width for better reading experience
+          margin: '4rem auto 0 auto', // Center the section
+        }}
+      >
+        <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>👤 About Me</h2>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          Hi, I’m Darren, a Data Engineer with a strong passion for automation and data-driven improvement in the semiconductor industry. I focus on working with manufacturing and equipment data to support smarter decision-making, better process control, and higher production efficiency.
+        </p>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          My experience includes developing systems to collect, clean, and analyze equipment and sensor data, supporting use cases like yield tracking, tool performance analysis, and anomaly detection. I enjoy creating automation solutions that reduce manual work, improve traceability, and help engineering teams respond faster to process issues.
+        </p>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          With a solid grasp of semiconductor operations and data workflows, I collaborate with process and equipment engineers to turn raw data into meaningful insights. I’m always exploring new ways to automate repetitive tasks, optimize workflows, and build tools that make engineers' lives easier.
+        </p>
+        <p style={{ lineHeight: '1.6' }}>
+          Driven by curiosity and hands-on problem solving, I’m motivated by the impact that smart automation and good data can have in a fast-paced manufacturing environment.
+        </p>
+      </div>
+
       {/* Contact Section */}
       <div
         id="contact"

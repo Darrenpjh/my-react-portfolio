@@ -82,6 +82,12 @@ Apr 2017 – Apr 2020
 Jun 2024
 Jun 2024
 Apr 2018
+
+ABOUT ME:
+Hi, I’m Darren, a Data Engineer with a strong passion for automation and data-driven improvement in the semiconductor industry. I focus on working with manufacturing and equipment data to support smarter decision-making, better process control, and higher production efficiency.
+My experience includes developing systems to collect, clean, and analyze equipment and sensor data, supporting use cases like yield tracking, tool performance analysis, and anomaly detection. I enjoy creating automation solutions that reduce manual work, improve traceability, and help engineering teams respond faster to process issues.
+With a solid grasp of semiconductor operations and data workflows, I collaborate with process and equipment engineers to turn raw data into meaningful insights. I’m always exploring new ways to automate repetitive tasks, optimize workflows, and build tools that make engineers' lives easier.
+Driven by curiosity and hands-on problem solving, I’m motivated by the impact that smart automation and good data can have in a fast-paced manufacturing environment.
 `;
 
 export default ragData;
