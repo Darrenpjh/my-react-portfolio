@@ -1,20 +1,50 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ragData from './ragData'; // Import the local data
-import natural from 'natural';
-
-const { TfIdf } = natural;
 
 const dataLines = ragData.toLowerCase().split('\n');
-const tfidf = new TfIdf();
-dataLines.forEach(line => tfidf.addDocument(line));
+const documents = dataLines.map(line => line.split(/\s+/));
+
+const tf = (doc) => {
+  const termFrequencies = {};
+  doc.forEach(term => {
+    termFrequencies[term] = (termFrequencies[term] || 0) + 1;
+  });
+  return termFrequencies;
+};
+
+const docTFs = documents.map(tf);
+
+const idf = {};
+const docCount = documents.length;
+documents.forEach(doc => {
+  const seenTerms = new Set();
+  doc.forEach(term => {
+    if (!seenTerms.has(term)) {
+      idf[term] = (idf[term] || 0) + 1;
+      seenTerms.add(term);
+    }
+  });
+});
+
+for (const term in idf) {
+  idf[term] = Math.log(docCount / idf[term]);
+}
 
 const getResponse = (query) => {
   const queryLower = query.toLowerCase();
+  const queryTokens = queryLower.split(/\s+/);
 
-  const results = tfidf.tfidfs(queryLower, (i, measure) => ({
-    line: dataLines[i],
-    measure,
-  }));
+  const tfidfScores = docTFs.map((docTF, i) => {
+    let score = 0;
+    queryTokens.forEach(term => {
+      if (docTF[term]) {
+        score += docTF[term] * (idf[term] || 0);
+      }
+    });
+    return { score, index: i };
+  });
+
+  tfidfScores.sort((a, b) => b.score - a.score);
 
   if (queryLower.includes('hello') || queryLower.includes('hi')) {
     return "Hello! I'm Darren's personal bot. How can I help you learn more about him today?";
@@ -23,9 +53,8 @@ const getResponse = (query) => {
     return "I am a friendly chatbot here to tell you about Darren Png. Ask me about his experience, projects, or skills!";
   }
 
-  if (results.length > 0 && results[0].measure > 0) {
-    // Return the most relevant line
-    return results[0].line;
+  if (tfidfScores.length > 0 && tfidfScores[0].score > 0) {
+    return dataLines[tfidfScores[0].index];
   }
 
   // Fallback for common topics if no direct keyword match in ragData is strong
@@ -63,7 +92,15 @@ function Chatbot() {
   }, [messages]);
 
   const typeMessage = (fullMessage) => {
-    setMessages(prevMessages => [...prevMessages, { text: '', sender: 'bot', isTyping: true }]);
+    setMessages(prevMessages => {
+        const lastMessage = prevMessages[prevMessages.length - 1];
+        if (lastMessage && lastMessage.sender === 'bot' && lastMessage.isTyping) {
+            // Update the existing typing message
+            return prevMessages.slice(0, -1).concat({ ...lastMessage, text: '', isTyping: true });
+        }
+        // Add a new typing message placeholder
+        return [...prevMessages, { text: '', sender: 'bot', isTyping: true }];
+    });
 
     let currentText = '';
     let charIndex = 0;
