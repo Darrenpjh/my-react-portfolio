@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ragData from './ragData'; // Import the local data
+import natural from 'natural';
 
-// Simple keyword-based response generation
+const { TfIdf } = natural;
+
+const dataLines = ragData.toLowerCase().split('\n');
+const tfidf = new TfIdf();
+dataLines.forEach(line => tfidf.addDocument(line));
+
 const getResponse = (query) => {
   const queryLower = query.toLowerCase();
-  const dataLines = ragData.toLowerCase().split('\n');
-  let relevantLines = [];
 
-  // Basic keyword matching
-  dataLines.forEach(line => {
-    const keywords = queryLower.split(' ').filter(kw => kw.length > 2); // Extract keywords from query
-    if (keywords.some(keyword => line.includes(keyword))) {
-      relevantLines.push(line);
-    }
-  });
+  const results = tfidf.tfidfs(queryLower, (i, measure) => ({
+    line: dataLines[i],
+    measure,
+  }));
 
   if (queryLower.includes('hello') || queryLower.includes('hi')) {
     return "Hello! I'm Darren's personal bot. How can I help you learn more about him today?";
@@ -22,11 +23,9 @@ const getResponse = (query) => {
     return "I am a friendly chatbot here to tell you about Darren Png. Ask me about his experience, projects, or skills!";
   }
 
-  if (relevantLines.length > 0) {
-    // Return a few relevant lines. This can be made more sophisticated.
-    // For now, just join the first few, or a specific one if only one is found.
-    if (relevantLines.length === 1) return relevantLines[0];
-    return relevantLines.slice(0, 2).join('. ') + "."; // Join first 2 relevant lines
+  if (results.length > 0 && results[0].measure > 0) {
+    // Return the most relevant line
+    return results[0].line;
   }
 
   // Fallback for common topics if no direct keyword match in ragData is strong
@@ -64,15 +63,7 @@ function Chatbot() {
   }, [messages]);
 
   const typeMessage = (fullMessage) => {
-    setMessages(prevMessages => {
-        const lastMessage = prevMessages[prevMessages.length - 1];
-        if (lastMessage && lastMessage.sender === 'bot' && lastMessage.isTyping) {
-            // Update the existing typing message
-            return prevMessages.slice(0, -1).concat({ ...lastMessage, text: '', isTyping: true });
-        }
-        // Add a new typing message placeholder
-        return [...prevMessages, { text: '', sender: 'bot', isTyping: true }];
-    });
+    setMessages(prevMessages => [...prevMessages, { text: '', sender: 'bot', isTyping: true }]);
 
     let currentText = '';
     let charIndex = 0;
