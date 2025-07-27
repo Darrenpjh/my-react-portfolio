@@ -133,22 +133,22 @@ function App() {
       >
         <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>🚀 My Projects</h2>
         <div className="projects-grid">
-          {/* Placeholder Project 1 */}
+          {/* Project 1 */}
           <div className="project-card">
-            <img src="https://via.placeholder.com/300x200.png?text=Project+Image+1" alt="Project 1" style={{ width: '100%', borderRadius: '4px' }} />
-            <h3 style={{ marginTop: '1rem' }}>Project Title 1</h3>
+            <img src="https://via.placeholder.com/300x200.png?text=Blur+Image+Classifier" alt="Blur Image Classifier" style={{ width: '100%', borderRadius: '4px' }} />
+            <h3 style={{ marginTop: '1rem' }}>Blur Image Classifier</h3>
             <p style={{ marginTop: '0.5rem', color: '#ccc' }}>
-              A brief description of Project 1. Highlighting key technologies and outcomes.
+              Developed a blur image classifier using SVM and RF models with Local Binary Patterns (LBP) and other techniques to ensure image quality.
             </p>
             <a href="#" target="_blank" rel="noopener noreferrer" className="project-link">View Project</a>
           </div>
 
-          {/* Placeholder Project 2 */}
+          {/* Project 2 */}
           <div className="project-card">
-            <img src="https://via.placeholder.com/300x200.png?text=Project+Image+2" alt="Project 2" style={{ width: '100%', borderRadius: '4px' }} />
-            <h3 style={{ marginTop: '1rem' }}>Project Title 2</h3>
+            <img src="https://via.placeholder.com/300x200.png?text=Image+Quality+Comparison" alt="Image Quality Comparison" style={{ width: '100%', borderRadius: '4px' }} />
+            <h3 style={{ marginTop: '1rem' }}>Image Quality Comparison using ChatGPT API</h3>
             <p style={{ marginTop: '0.5rem', color: '#ccc' }}>
-              A brief description of Project 2. Focusing on the challenges and solutions.
+              Utilized the ChatGPT API to evaluate and compare reference and actual images by formulating prompts that describe the expected visual characteristics.
             </p>
             <a href="#" target="_blank" rel="noopener noreferrer" className="project-link">View Project</a>
           </div>
