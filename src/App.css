@@ -82,7 +82,21 @@
   transform: translateY(50px);
 }
 
-@keyframes slideUp {
+/* About Me Section Animation */
+.about-me-fade-in {
+  animation: fadeInAnimation 1.5s ease-in-out 1.2s forwards; /* Delayed fade-in */
+  opacity: 0;
+}
+/* Re-using fadeInAnimation keyframes defined earlier for overall page fade-in */
+/* If a different animation is desired, new keyframes can be added here */
+
+/*
+Removed duplicate @keyframes slideUp - it's already defined above for .contact-slide-up
+If .projects-slide-up needs a distinct slideUp, it should have a uniquely named animation.
+For now, assuming .projects-slide-up and .contact-slide-up use the same slideUp keyframes.
+*/
+
+@keyframes slideUp { /* Ensuring this is the single definition for slideUp */
   to {
     opacity: 1;
     transform: translateY(0);

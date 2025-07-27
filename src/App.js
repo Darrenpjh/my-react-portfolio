@@ -70,6 +70,35 @@ function App() {
         }}
       />
 
+      {/* About Me Section */}
+      <div
+        id="about"
+        className="about-me-fade-in" // Using a fade-in animation, can be customized
+        style={{
+          marginTop: '4rem',
+          padding: '2rem 1rem',
+          borderTop: '1px solid #444',
+          borderBottom: '1px solid #444',
+          textAlign: 'left', // Align text to the left for readability
+          maxWidth: '800px', // Max width for better reading experience
+          margin: '4rem auto 0 auto', // Center the section
+        }}
+      >
+        <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>👤 About Me</h2>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          Hi, I’m Darren, a Data Engineer with a strong passion for automation and data-driven improvement in the semiconductor industry. I focus on working with manufacturing and equipment data to support smarter decision-making, better process control, and higher production efficiency.
+        </p>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          My experience includes developing systems to collect, clean, and analyze equipment and sensor data, supporting use cases like yield tracking, tool performance analysis, and anomaly detection. I enjoy creating automation solutions that reduce manual work, improve traceability, and help engineering teams respond faster to process issues.
+        </p>
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          With a solid grasp of semiconductor operations and data workflows, I collaborate with process and equipment engineers to turn raw data into meaningful insights. I’m always exploring new ways to automate repetitive tasks, optimize workflows, and build tools that make engineers' lives easier.
+        </p>
+        <p style={{ lineHeight: '1.6' }}>
+          Driven by curiosity and hands-on problem solving, I’m motivated by the impact that smart automation and good data can have in a fast-paced manufacturing environment.
+        </p>
+      </div>
+
       {/* Contact Section */}
       <div
         id="contact"
@@ -94,7 +123,6 @@ function App() {
             https://www.linkedin.com/in/darren-png/
           </a>
         </p>
-      
       </div>
 
       {/* Projects Section */}
@@ -105,22 +133,22 @@ function App() {
       >
         <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>🚀 My Projects</h2>
         <div className="projects-grid">
-          {/* Placeholder Project 1 */}
+          {/* Project 1 */}
           <div className="project-card">
-            <img src="https://via.placeholder.com/300x200.png?text=Project+Image+1" alt="Project 1" style={{ width: '100%', borderRadius: '4px' }} />
-            <h3 style={{ marginTop: '1rem' }}>Project Title 1</h3>
+            <img src="https://via.placeholder.com/300x200.png?text=Blur+Image+Classifier" alt="Blur Image Classifier" style={{ width: '100%', borderRadius: '4px' }} />
+            <h3 style={{ marginTop: '1rem' }}>Blur Image Classifier</h3>
             <p style={{ marginTop: '0.5rem', color: '#ccc' }}>
-              A brief description of Project 1. Highlighting key technologies and outcomes.
+              Developed a blur image classifier using SVM and RF models with Local Binary Patterns (LBP) and other techniques to ensure image quality.
             </p>
             <a href="#" target="_blank" rel="noopener noreferrer" className="project-link">View Project</a>
           </div>
 
-          {/* Placeholder Project 2 */}
+          {/* Project 2 */}
           <div className="project-card">
-            <img src="https://via.placeholder.com/300x200.png?text=Project+Image+2" alt="Project 2" style={{ width: '100%', borderRadius: '4px' }} />
-            <h3 style={{ marginTop: '1rem' }}>Project Title 2</h3>
+            <img src="https://via.placeholder.com/300x200.png?text=Image+Quality+Comparison" alt="Image Quality Comparison" style={{ width: '100%', borderRadius: '4px' }} />
+            <h3 style={{ marginTop: '1rem' }}>Image Quality Comparison using ChatGPT API</h3>
             <p style={{ marginTop: '0.5rem', color: '#ccc' }}>
-              A brief description of Project 2. Focusing on the challenges and solutions.
+              Utilized the ChatGPT API to evaluate and compare reference and actual images by formulating prompts that describe the expected visual characteristics.
             </p>
             <a href="#" target="_blank" rel="noopener noreferrer" className="project-link">View Project</a>
           </div>
